@@ -25,6 +25,7 @@
         routerLink=""
         [ngClass]="{ active: menuOption == 'cupones' }"
         (click)="onOption('cupones')"
+        *ngIf="userLoginOn"
         >Cupones</a
       >
     </li>
@@ -34,7 +35,8 @@
         routerLink="profile"
         [ngClass]="{ active: menuOption == 'nosotros' }"
         (click)="onOption('nosotros')"
-        >Nosotros</a
+        *ngIf="userLoginOn" 
+        >Mi Perfil</a
       >
     </li>
     <li class="nav-item">
@@ -46,6 +48,11 @@
         >Contacto</a
       >
     </li>
+
+
+  <li *ngIf="userLoginOn" class="nav-item">
+    <a class="nav-link" routerLink="ajustes">Ajustes</a>
+  </li>
   </ul>
 
   <button
