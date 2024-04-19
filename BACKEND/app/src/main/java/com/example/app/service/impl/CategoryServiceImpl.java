@@ -1,6 +1,5 @@
 package com.example.app.service.impl;
 
-
 import com.example.app.dto.category.CategoryDTO;
 import com.example.app.dto.category.CategoryUpdateDTO;
 import com.example.app.mapper.CategoryMapper;
@@ -8,7 +7,6 @@ import com.example.app.model.Category;
 import com.example.app.repository.CategoryRepository;
 import com.example.app.service.CategoryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -20,11 +18,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
 
-    @Autowired
-    private CategoryRepository categoryRepository;
-
-    @Autowired
-    private CategoryMapper categoryMapper;
+    private final CategoryRepository categoryRepository;
+    private final CategoryMapper categoryMapper;
 
     @Override
     @Transactional(readOnly = true)
@@ -44,7 +39,6 @@ public class CategoryServiceImpl implements CategoryService {
         Long categoryId = category.getId().longValue();
         return new CategoryDTO(categoryId, category.getName());
     }
-
 
     @Override
     @Transactional
@@ -68,7 +62,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional
     public void delete(Long id) {
-                Category category = categoryRepository.findById(id)
+        Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found with id: " + id));
 
         categoryRepository.delete(category);
