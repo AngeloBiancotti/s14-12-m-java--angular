@@ -1,25 +1,26 @@
 package com.example.app.service;
 
 import com.example.app.dto.product.ProductPromotionMessagesDto;
+import com.example.app.dto.product.ProductUpdateDTO;
+import com.example.app.dto.product.ProductWithCategoryDTO;
 import com.example.app.dto.product.ProductWithPromoDto;
 import com.example.app.model.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-
-import java.util.List;
 import java.util.Optional;
 
 public interface ProductService {
 
+    Page<ProductWithCategoryDTO> findAll(Pageable pageable);
 
-    List<Product> findAll();
+    Optional<ProductWithCategoryDTO> findById(Long id);
 
-    Optional<Product> findById(Long id);
+    ProductWithCategoryDTO save(ProductWithCategoryDTO productWithCategoryDTO);
 
-    Product save(Product product);
+    Optional<Product> update(Long id, ProductUpdateDTO productUpdateDTO);
 
-    Optional<Product> update(Long id, Product product);
-
-    Optional<Product> delete(Long id);
+    void delete(Long id);
 
     ProductPromotionMessagesDto addPromotion(Long idProduct, Long promotionId);
 
