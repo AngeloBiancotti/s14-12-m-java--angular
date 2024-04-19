@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class Product {
 
     @Id
