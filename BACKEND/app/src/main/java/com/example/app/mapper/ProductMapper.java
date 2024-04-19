@@ -1,5 +1,6 @@
 package com.example.app.mapper;
 
+import com.example.app.dto.product.ProductWithCategoryDTO;
 import com.example.app.dto.product.ProductWithPromoDto;
 import com.example.app.model.Product;
 import org.mapstruct.*;
@@ -8,7 +9,10 @@ import org.mapstruct.*;
 public interface ProductMapper {
     Product toEntity(ProductWithPromoDto productWithPromoDto);
 
-
     ProductWithPromoDto productToProductWithPromosDto(Product product);
+
+    ProductWithCategoryDTO productToProductWithCategoryDTO(Product product);
+
+    Product toEntityFromCategoryDTO(ProductWithCategoryDTO productWithCategoryDTO);
 
 }
