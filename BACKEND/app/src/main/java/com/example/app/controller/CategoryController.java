@@ -2,7 +2,6 @@ package com.example.app.controller;
 
 import com.example.app.dto.category.CategoryDTO;
 import com.example.app.dto.category.CategoryUpdateDTO;
-import com.example.app.mapper.CategoryMapper;
 import com.example.app.model.Category;
 import com.example.app.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -14,7 +13,6 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -32,8 +30,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CategoryController {
 
-    @Autowired
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
     @Operation(summary = "Create a new category", description = "Create a new category.")
     @ApiResponses(value = {
